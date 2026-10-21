@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مملكة نورث | NORTH</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;900&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#07060d;--ink2:#0e0b18;--line:rgba(236,234,243,.12);--frost:#eceaf3;--mute:#9b96a8;--dim:#625d70;--vio:#9a63e6;--vio2:#4a2386;--ice:#9fd3ff;--gold:#e0bf72;--red:#c2405a;--card:rgba(18,13,30,.72);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--ink:#07060d}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#07060d}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px));background:var(--ink)}
+body{background:var(--ink);color:var(--frost);font-family:"Cairo",sans-serif;overflow-x:hidden;line-height:1.9}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+::selection{background:var(--vio2)}
+.lat{font-family:"Cinzel",serif}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:2}
+background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.7)),
+    url('./kuroro.jpg') center 25% / cover no-repeat;
+/* intro */
+#intro{position:fixed;inset:0;z-index:99;background:var(--ink);display:grid;place-items:center;transition:opacity 1s,visibility 1s}
+#intro.hide{opacity:0;visibility:hidden}
+#intro div{font-family:"Cinzel",serif;font-size:clamp(46px,14vw,110px);letter-spacing:.3em;padding-inline-start:.3em;background:linear-gradient(90deg,#4a2386,#eceaf3,#9fd3ff,#4a2386);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 2s ease-in-out}
+@keyframes sh{from{background-position:100%;opacity:0}30%{opacity:1}to{background-position:0}}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(7,6,13,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.bar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 5%}
+.logo{display:flex;align-items:center;gap:11px;font-family:"Cinzel",serif;font-weight:700;letter-spacing:.2em}
+.logo i{width:36px;height:36px;border-radius:50%;border:1px solid var(--vio);display:grid;place-items:center;font-style:normal;box-shadow:0 0 22px rgba(154,99,230,.4)}
+nav{display:flex;gap:4px}
+nav a{padding:8px 13px;font-size:13px;color:var(--mute);border-radius:99px;transition:.3s}
+nav a:hover,nav a.on{color:#fff;background:rgba(154,99,230,.18)}
+#mb{display:none;background:none;border:1px solid var(--line);color:var(--frost);width:42px;height:42px;border-radius:50%;font-size:19px;cursor:pointer}
+#prog{position:absolute;bottom:-1px;right:0;height:2px;width:0;background:linear-gradient(270deg,var(--vio),var(--ice))}
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:130px 20px 90px}
+.hero h1{font-family:"Cinzel",serif;font-weight:900;font-size:clamp(70px,21vw,260px);line-height:.9;letter-spacing:.06em;padding-inline-start:.06em;background:linear-gradient(180deg,#fff 20%,#b9a3e8 60%,#3a1d6e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 60px rgba(154,99,230,.35))}
+.hero h2{font-weight:300;font-size:clamp(20px,4vw,38px);letter-spacing:.35em;color:var(--ice);margin-top:12px}
+.hero p{max-width:560px;margin:30px auto 0;color:var(--mute);font-size:15px}
+.cta{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.btn{padding:13px 28px;border-radius:99px;border:1px solid var(--line);font-weight:600;font-size:14px;transition:.3s;background:rgba(14,11,24,.6)}
+.btn.p{background:linear-gradient(135deg,var(--vio2),var(--vio));border-color:transparent;box-shadow:0 10px 40px rgba(154,99,230,.35)}
+.btn:hover{transform:translateY(-3px)}
+/* sections */
+section{padding:110px 6%;max-width:1200px;margin:auto}
+.hd{text-align:center;margin-bottom:60px}
+.hd small{color:var(--vio);font-family:"Cinzel",serif;letter-spacing:.3em;font-size:12px}
+.hd h2{font-size:clamp(32px,6vw,58px);font-weight:900;line-height:1.3}
+.hd p{color:var(--mute);max-width:560px;margin:8px auto 0;font-size:14px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:1000px;margin:-30px auto 0;border:1px solid var(--line);border-radius:22px;background:var(--card);backdrop-filter:blur(14px);overflow:hidden}
+.stat{padding:34px 10px;text-align:center}
+.stat+.stat{border-inline-end:1px solid var(--line)}
+.stat b{display:block;font-family:"Cinzel",serif;font-size:clamp(34px,6vw,54px);color:#fff}
+.stat span{color:var(--mute);font-size:13px}
+/* throne */
+.throne{position:relative;display:flex;flex-direction:column;align-items:center;gap:0}
+.throne::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(transparent,var(--vio),transparent)}
+.tier{position:relative;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;width:100%;margin-bottom:44px}
+.tier-t{width:100%;text-align:center;color:var(--dim);font-size:12px;letter-spacing:.25em;font-family:"Cinzel",serif;margin-bottom:-6px;position:relative}
+.tier-t span{background:var(--ink);padding:0 14px}
+.rank{position:relative;width:min(100%,300px);padding:30px 22px 26px;text-align:center;border-radius:20px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);transition:transform .25s,border-color .3s,box-shadow .3s;transform-style:preserve-3d}
+.rank:hover{border-color:var(--vio);box-shadow:0 25px 70px rgba(74,35,134,.5)}
+.rank.emp{width:min(100%,380px);padding:40px 26px;border-color:rgba(224,191,114,.5);background:radial-gradient(circle at 50% 0%,rgba(224,191,114,.14),transparent 60%),var(--card);box-shadow:0 0 90px rgba(224,191,114,.12)}
+.sig{position:relative;overflow:hidden;width:84px;height:84px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-family:"Cinzel",serif;font-weight:700;font-size:32px;border:1px solid var(--vio);background:radial-gradient(circle,rgba(154,99,230,.35),rgba(7,6,13,.8));box-shadow:0 0 0 7px rgba(154,99,230,.07),0 0 40px rgba(154,99,230,.4)}
+.sig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.emp .sig{width:100%;height:auto;aspect-ratio:1/1;border-radius:18px;margin:0 auto 18px;font-size:70px;border-color:var(--gold);color:var(--gold);background:radial-gradient(circle,rgba(224,191,114,.3),rgba(7,6,13,.8));box-shadow:0 0 0 1px rgba(224,191,114,.4),0 0 60px rgba(224,191,114,.3);animation:fl 5s ease-in-out infinite}
+.emp .sig img{border-radius:18px}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.rank em{font-style:normal;display:inline-block;font-size:12px;color:var(--ice);border:1px solid rgba(159,211,255,.3);border-radius:99px;padding:1px 14px;font-family:"Cinzel",serif;letter-spacing:.12em}
+.emp em{color:var(--gold);border-color:rgba(224,191,114,.5)}
+.rank h3{font-size:30px;font-weight:800;margin-top:8px}
+.rank small{display:block;color:var(--mute);font-size:13px}
+.rank p{color:var(--dim);font-size:13px;margin-top:10px;line-height:1.8}
+/* story */
+.story{text-align:center;max-width:860px}
+.story .date{font-family:"Cinzel",serif;font-size:clamp(38px,9vw,84px);font-weight:900;color:transparent;-webkit-text-stroke:1px var(--vio);letter-spacing:.06em}
+.story p{color:var(--mute);font-size:16px;margin-top:20px}
+.story b{color:var(--gold)}
+/* kings */
+.kings{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.crown{aspect-ratio:3/4;border:1px dashed rgba(154,99,230,.4);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--dim);font-size:12px;background:linear-gradient(180deg,rgba(154,99,230,.07),transparent);transition:.3s}
+.crown:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-6px)}
+.crown i{font-style:normal;font-size:34px;filter:none;opacity:1}
+.kings-note{text-align:center;color:var(--mute);margin-top:26px;font-size:14px}
+/* honors */
+.honors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.honor{position:relative;padding:34px 26px;border-radius:20px;background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.35s}
+.honor::after{content:"";position:absolute;inset-inline:0;bottom:0;height:3px;background:var(--c)}
+.honor:hover{transform:translateY(-8px);border-color:var(--c)}
+.honor .n{font-family:"Cinzel",serif;font-size:60px;font-weight:900;line-height:1;color:var(--c);opacity:.9}
+.honor h3{font-size:26px;font-weight:800;margin-top:10px}
+.honor small{color:var(--c);font-family:"Cinzel",serif;letter-spacing:.14em;font-size:11px}
+.honor p{color:var(--mute);font-size:14px;margin-top:10px}
+/* retired */
+.ret{max-width:760px;margin:auto}
+.ret div{display:flex;align-items:center;gap:20px;padding:22px 6px;border-bottom:1px solid var(--line);transition:.3s}
+.ret div:hover{padding-inline-start:20px;background:rgba(154,99,230,.06)}
+.ret b{font-size:20px;font-weight:700;flex:1}
+.ret span{color:var(--mute);font-size:14px}
+.ret i{font-style:normal;font-size:11px;letter-spacing:.2em;color:var(--dim);font-family:"Cinzel",serif}
+/* guilds */
+.seal{width:92px;height:92px;margin:0 auto 40px;border-radius:50%;display:grid;place-items:center;font-family:"Cinzel",serif;font-size:34px;border:1px solid var(--vio);box-shadow:0 0 70px rgba(154,99,230,.4),inset 0 0 30px rgba(154,99,230,.2);animation:sp 14s linear infinite;border-style:dashed}
+@keyframes sp{to{transform:rotate(360deg)}}
+.seal span{animation:sp 14s linear infinite reverse}
+.guilds{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.guild{--a:var(--vio);position:relative;aspect-ratio:1;border-radius:20px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;transition:transform .25s,border-color .3s;transform-style:preserve-3d}
+.guild::before{content:"";position:absolute;width:140%;height:140%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),var(--a),transparent 45%);opacity:0;transition:.4s}
+.guild:hover{border-color:var(--a)}
+.guild:hover::before{opacity:.35}
+.guild>*{position:relative}
+.guild .ic{font-size:44px}
+.guild h3{font-size:22px;font-weight:800}
+.guild small{font-family:"Cinzel",serif;letter-spacing:.2em;color:var(--mute);font-size:11px}
+.guild:last-child{grid-column:span 1}
+/* tournament */
+.tour{text-align:center;padding:70px 28px;border-radius:28px;border:1px solid var(--line);background:radial-gradient(circle at 50% 0%,rgba(194,64,90,.18),transparent 60%),var(--card)}
+.tour .sw{font-size:56px}
+.tour h3{font-size:clamp(28px,5vw,44px);font-weight:900}
+.tour p{color:var(--mute);max-width:560px;margin:12px auto 0}
+.tags{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.tags span{border:1px solid var(--line);border-radius:99px;padding:5px 16px;font-size:11px;color:var(--mute);font-family:"Cinzel",serif;letter-spacing:.14em}
+/* about */
+.about{text-align:center;max-width:820px}
+.about p{color:var(--mute);font-size:17px}
+.about q{display:block;margin-top:34px;font-size:clamp(20px,3.4vw,30px);font-weight:800;color:var(--frost);line-height:1.7;quotes:"“" "”"}
+footer{text-align:center;padding:60px 20px calc(40px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:rgba(3,2,7,.8)}
+footer .logo{justify-content:center}
+footer p{color:var(--dim);font-size:13px;margin-top:8px}
+@media(max-width:900px){#mb{display:block}nav{display:none;position:absolute;top:100%;left:12px;right:12px;flex-direction:column;background:rgba(7,6,13,.97);border:1px solid var(--line);border-radius:18px;padding:10px}nav.open{display:flex}nav a{text-align:center;padding:12px}
+.kings{grid-template-columns:repeat(3,1fr)}.guilds{grid-template-columns:repeat(3,1fr)}.honors{grid-template-columns:1fr}}
+@media(max-width:560px){section{padding:80px 16px}.stats{grid-template-columns:1fr;margin-inline:16px}.stat+.stat{border-inline-end:0;border-top:1px solid var(--line)}.kings{grid-template-columns:repeat(2,1fr)}.guilds{grid-template-columns:repeat(2,1fr);gap:10px}.guild h3{font-size:18px}.guild .ic{font-size:34px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+<div id="intro"><div>NORTH</div></div>
+
+<header>
+ <div class="bar">
+  <a href="#home" class="logo"><i>N</i>NORTH</a>
+  <button id="mb" aria-label="فتح القائمة">☰</button>
+  <nav id="nav">
+   <a href="#home">الرئيسية</a><a href="#leadership">السلطة العليا</a><a href="#history">المسيرة</a><a href="#kings">الملوك</a><a href="#honors">التكريمات</a><a href="#retired">المعتزلون</a><a href="#guilds">النقابات</a><a href="#tournament">البطولات</a><a href="#about">المملكة</a>
+  </nav>
+ </div>
+ <div id="prog"></div>
+</header>
+
+<main>
+<div class="hero" id="home">
+ <div>
+  <h1>NORTH</h1>
+  <h2>مملكة الـشمال</h2>
+  <p>هـلالـنـا تـاج الـسـمـاء، ومـجـدنـا لا يـغـيـب مـملـكـة تـهـاب، وعـز لا يـمـيـل الـشـ🌙ـمـال</p>
+  <div class="cta"><a class="btn p" href="#leadership">اكتشف السلطة العليا</a><a class="btn" href="#guilds">استكشف النقابات</a></div>
+ </div>
+</div>
+
+<div class="stats rv">
+ <div class="stat"><b data-n="7" data-s="">0</b><span>نقابات داخل المملكة</span></div>
+ <div class="stat"><b data-n="200" data-s="+">0</b><span>مشرف وقائد</span></div>
+ <div class="stat"><b data-n="140" data-s="K">0</b><span>أعلى تفاعل مسجل</span></div>
+</div>
+
+<section id="leadership">
+ <div class="hd rv"><small>ROYAL AUTHORITY</small><h2>السلطة العليا</h2><p>الرتب العليا، المرجع الأول والأخير في شؤون المملكة وقراراتها المصيرية.</p></div>
+ <div class="throne">
+  <div class="tier rv"><div class="rank emp"><div class="sig">K<img src="Krullo.jpg" alt="كرولو" onerror="this.remove()"></div><em>EMPEROR</em><h3>كرولو</h3><small>إمبراطور المملكة</small><p>المسؤول عن فتح النقابات وفتح الفروع وكل ما يخص المملكة.</p></div></div>
+  <div class="tier rv">
+   <div class="rank"><div class="sig">O<img src="Ozuki.jpg" alt="اوزوكي" onerror="this.remove()"></div><em>VICE EMPEROR</em><h3>اوزوكي</h3><small>نائب الإمبراطور</small><p>المسؤول عن المملكة في غياب كرولو.</p></div>
+   <div class="rank"><div class="sig">I<img src="Irene.jpg" alt="ايرين" onerror="this.remove()"></div><em>VICE EMPEROR</em><h3>ايرين</h3><small>نائب الإمبراطور</small><p>المسؤول عن إدارة المملكة.</p></div>
+  </div>
+  <div class="tier rv">
+   <div class="rank"><div class="sig">K<img src="Kanki.jpg" alt="كانكي" onerror="this.remove()"></div><em>LORD</em><h3>كانكي</h3><small>لورد المملكة</small><p>المسؤول عن إدارة النقابات.</p></div>
+   <div class="rank"><div class="sig">Y<img src="Yami.jpg" alt="يامي" onerror="this.remove()"></div><em>LORD</em><h3>يامي</h3><small>لورد الفروع</small><p>المسؤول عن فتح وإقفال الفروع.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="history" class="story rv">
+ <div class="hd"><small>LEGACY</small><h2>مسيرة مملكة نورث</h2></div>
+ <div class="date">2026 / 9 / 4</div>
+ <p>تأسست مملكة نورث بتاريخ <b>2026/9/4</b> على يد المؤسس <b>كرولو</b>، الذي لعب دورًا بارزًا في تأسيس المملكة وتطورها، بعد أن اعتزل شادو في مملكة اريڤانيا وأنهى مسيرتها. ومن ثم ترقّى <b>كرولو</b> إلى رتبة مؤسس وأكمل مسيرة نورث. فهل سنجد نورث من أقوى الممالك بحلول عيد تأسيسها؟</p>
+</section>
+
+<section id="kings">
+ <div class="hd rv"><small>THE FIVE CROWNS</small><h2>ادميرالات المملكة</h2><p>Admirals of the Northern Kingdom</p></div>
+ <div class="kings rv"><div class="crown"><i>🌊
+ </i>الادميراله:ماكي</div><div class="crown"><i>⚖️</i>الادميراله:الفاريا</div><div class="crown"><i>🩸</i>الادميراله:بياتريس</div><div class="crown"><i>🪐</i>الادميرال:غيو</div><div class="crown"><i>⚡</i>الادميرال:يوتا</div><div class="crown"><i>⛈️</i>الادميرال: شاغر</div><div class="crown"><i>💧</i>الادميرال:كيرا</div></div>
+ <p class="kings-note rv">ادميرالات الشمال</p>
+ 
+</section>
+
+<section id="honors">
+ <div class="hd rv"><small>HALL OF HONOR</small><h2>تكريمات المملكة</h2><p>أسماء لم تكن مجرد أعضاء، بل تركت أثرًا واضحًا في تاريخ المملكة.</p></div>
+ <div class="honors">
+  <article class="honor rv" style="--c:var(--red)"><div class="n">I</div><small>THE GREAT PUBLISHER</small><h3>كانيكي</h3><p>صاحب حضور قوي في النشر، وكان أفضل نائب لورد في نهاية حقبة، وساعد العديد من النقابات.</p></article>
+  <article class="honor rv" style="--c:var(--gold)"><div class="n">II</div><small>THE STABILIZER</small><h3>اوزوكي</h3><p>أمير سابق ساهم في فتح النقابات، وكان من أبرز الأمراء الذين مرّوا على المملكة.</p></article>
+  <article class="honor rv" style="--c:var(--vio)"><div class="n">III</div><small>THE LOYAL DEPUTY</small><h3>يامي</h3><p>أمير سابق ساهم في تحسين وتأسيس عدد من النقابات.</p></article>
+ </div>
+</section>
+
+<section id="retired">
+ <div class="hd rv"><small>ARCHIVES OF THE PAST</small><h2>قادة اعتزلوا</h2><p>أسماء صنعت جزءًا من تاريخ المملكة ثم غادرت مواقعها.</p></div>
+ <div class="ret rv">
+  <div><b>شادو</b><span>مؤسس اريڤانيا</span><i>RETIRED</i></div>
+  <div><b>ثورفين</b><span>لورد الفروع</span><i>RETIRED</i></div>
+  <div><b>كانيكي</b><span>لورد اريڤانيا</span><i>RETIRED</i></div>
+ </div>
+</section>
+
+<section id="guilds">
+ <div class="hd rv"><small>THE 7 GUILDS</small><h2>نقابات نورث</h2><p><strong>7 نقابات</strong> تحت راية المملكة.</p></div>
+ <div class="seal rv"><span>N</span></div>
+ <div class="guilds rv">
+  <div class="guild" style="--a:#3aa0ff"><div class="ic">🌊</div><h3>اريسا</h3><small>ARISSA</small></div>
+  <div class="guild" style="--a:#e0bf72"><div class="ic">⚖️</div><h3>لوس</h3><small>LOUS</small></div>
+  <div class="guild" style="--a:#c2405a"><div class="ic">🩸</div><h3>سول</h3><small>SOUL</small></div>
+  <div class="guild" style="--a:#9a63e6"><div class="ic">🪐</div><h3>فوتريكس</h3><small>FOTRIX</small></div>
+  <div class="guild" style="--a:#ffd23a"><div class="ic">⚡</div><h3>رايجين</h3><small>RAIJIN</small></div>
+  <div class="guild" style="--a:#6a7bd6"><div class="ic">⛈️</div><h3>ايريس</h3><small>ARISE</small></div>
+  <div class="guild" style="--a:#5fd0e6"><div class="ic">💧</div><h3>سيلا</h3><small>SILA</small></div>
+ </div>
+</section>
+
+<section id="tournament">
+ <div class="hd rv"><small>ROYAL ARENA</small><h2>بطولات المملكة</h2></div>
+ <div class="tour rv"><div class="sw">⚔️</div><h3>البطولة الملكية</h3><p>ساحة تجمع النقابات والأعضاء في منافسات تختبر القوة والتخطيط والتعاون والقدرة على صناعة المجد داخل المملكة.</p><div class="tags"><span>ROYAL TOURNAMENT</span><span>GUILD VS GUILD</span><span>HONOR &amp; GLORY</span></div></div>
+</section>
+
+<section id="about" class="about rv">
+ <div class="hd"><small>THE KINGDOM</small><h2>الــشمال</h2></div>
+ <p>نورث ليست مجرد اسم أو مجموعة من النقابات. إنها عالم تشكّل عبر القادة والملوك والأعضاء الذين تركوا أثرًا في تاريخها. هنا تُحفظ الإنجازات، وتُذكر الأسماء، ويُمنح كل شخص المكانة التي صنعها بأفعاله.</p>
+ <q>التاريخ لا يحفظ من حكم فقط، بل يحفظ من ترك أثرًا.</q>
+</section>
+</main>
+
+<footer>
+ <div class="logo"><i>N</i>NORTH</div>
+ <p>منشئ الموقع: هيكارو</p>
+ <p>© 2026 NORTH KINGDOM</p>
+</footer>
+
+<script>
+(function(){
+var $=function(s,r){return(r||document).querySelectorAll(s)};
+window.addEventListener("load",function(){setTimeout(function(){document.getElementById("intro").classList.add("hide")},1700)});
+var nav=document.getElementById("nav");
+document.getElementById("mb").onclick=function(){nav.classList.toggle("open")};
+$("nav a").forEach(function(a){a.onclick=function(){nav.classList.remove("open")}});
+/* reveal + counters */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add("in");$("[data-n]",e.target).forEach(count);io.unobserve(e.target)})},{threshold:.15});
+$(".rv").forEach(function(el){io.observe(el)});
+function count(el){var n=+el.dataset.n,s=el.dataset.s,t0=performance.now();(function f(t){var p=Math.min((t-t0)/1600,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+s;if(p<1)requestAnimationFrame(f)})(t0)}
+/* active nav + progress */
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)$("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})})},{threshold:.35});
+$("[id]").forEach(function(s){if(s.tagName==="SECTION"||s.id==="home")so.observe(s)});
+var pr=document.getElementById("prog");
+addEventListener("scroll",function(){pr.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+"%"},{passive:true});
+/* 3D tilt + glow */
+$(".rank,.guild").forEach(function(c){
+ c.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty("--mx",x*100+"%");c.style.setProperty("--my",y*100+"%");c.style.transform="perspective(700px) rotateX("+((.5-y)*9)+"deg) rotateY("+((x-.5)*9)+"deg) translateY(-4px)"});
+ c.addEventListener("pointerleave",function(){c.style.transform=""})});
+/* sky: aurora + snow reacting to pointer */
+var cv=document.getElementById("sky"),g=cv.getContext("2d"),W,H,fl=[],mx=.5,t=0,rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function rs(){var d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;g.setTransform(d,0,0,d,0,0);fl=[];for(var i=0;i<Math.min(110,W/9);i++)fl.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.4,v:Math.random()*.7+.2,s:Math.random()*6.28,o:Math.random()*.6+.2})}
+rs();addEventListener("resize",rs);
+addEventListener("pointermove",function(e){mx=e.clientX/W});
+function band(y0,col,ph,amp){g.beginPath();g.moveTo(0,H);for(var x=0;x<=W;x+=24){var y=y0+Math.sin(x*.003+t*.0006+ph)*amp+Math.sin(x*.008-t*.0004+ph)*amp*.4+(mx-.5)*40;g.lineTo(x,y)}g.lineTo(W,H);g.closePath();var gr=g.createLinearGradient(0,y0-amp,0,y0+H*.35);gr.addColorStop(0,col);gr.addColorStop(1,"rgba(7,6,13,0)");g.fillStyle=gr;g.fill()}
+function draw(){t+=16;g.clearRect(0,0,W,H);g.globalCompositeOperation="lighter";band(H*.18,"rgba(154,99,230,.16)",0,50);band(H*.3,"rgba(95,208,230,.09)",2,40);band(H*.42,"rgba(74,35,134,.14)",4,60);g.globalCompositeOperation="source-over";
+ g.fillStyle="#fff";fl.forEach(function(f){f.s+=.01;f.y+=f.v;f.x+=Math.sin(f.s)*.4;if(f.y>H+5){f.y=-5;f.x=Math.random()*W}g.globalAlpha=f.o;g.beginPath();g.arc(f.x,f.y,f.r,0,6.28);g.fill()});g.globalAlpha=1;
+ if(!rm)requestAnimationFrame(draw)}
+draw();
+})();
+</script>
+</body>
+</html>

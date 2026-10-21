@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝐍𝐎𝐑𝐓𝐇 | 𝐍.𝐑.𝐇</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { background: #050a18; overflow: hidden; font-family: 'Tajawal', sans-serif; }
+
+    /* خلفية الحجر الأزرق الليلي */
+    .bg {
+        position: fixed; inset: 0; z-index: 1;
+        background:
+            radial-gradient(ellipse at 50% 45%, rgba(255,200,90,0.35) 0%, transparent 55%),
+            linear-gradient(180deg, #0c1a3a 0%, #0a1330 55%, #03050d 100%);
+    }
+    .bg::before, .bg::after {
+        content: ''; position: absolute; top: 0; bottom: 0; width: 9%;
+        background: repeating-linear-gradient(180deg, #14264d 0 38px, #0d1a38 38px 40px);
+        opacity: .7;
+    }
+    .bg::before { left: 0; } .bg::after { right: 0; }
+
+    /* ثلج */
+    #snow { position: fixed; inset: 0; z-index: 6; pointer-events: none; }
+
+    /* شعاع النور */
+    .light {
+        position: fixed; z-index: 2; top: 8%; bottom: 14%; left: 50%;
+        width: 6%; transform: translateX(-50%);
+        background: linear-gradient(180deg, #fff6d0, #ffc95a 45%, #ffdf8a);
+        filter: blur(14px); opacity: .9;
+        transition: width 2.4s ease, opacity 2.4s;
+        animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: 1; filter: blur(20px); } }
+    .open ~ .light, body.opened .light { width: 90%; }
+
+    /* البوابة */
+    .gate-container {
+        position: fixed; inset: 0; z-index: 3;
+        display: flex; justify-content: center; align-items: center;
+        perspective: 2200px; direction: ltr;
+    }
+    .door-frame {
+        position: relative; width: min(88vw, 640px); height: 74vh; max-height: 760px;
+        display: flex; border-top: 10px solid #0b1530; border-radius: 6px 6px 0 0;
+        box-shadow: 0 0 80px rgba(255,190,80,.25);
+    }
+    .gate {
+        position: relative; width: 50%; height: 100%;
+        background:
+            /* حبيبات الخشب */
+            repeating-linear-gradient(90deg, rgba(0,0,0,.10) 0 2px, transparent 2px 9px),
+            linear-gradient(180deg, #8a5a2b, #6e431d 50%, #5a3516);
+        border: 3px solid #2a1a0c;
+        box-shadow: inset 0 0 60px rgba(0,0,0,.55);
+        transition: transform 2.4s cubic-bezier(.77,0,.175,1);
+    }
+    .gate-left  { transform-origin: left center; }
+    .gate-right { transform-origin: right center; }
+
+    /* ألواح الباب المنقوشة */
+    .panel {
+        position: absolute; left: 22%; right: 22%; top: 30%; height: 28%;
+        border: 3px solid rgba(30,16,6,.7); border-radius: 40% 40% 4px 4px / 22% 22% 4px 4px;
+        background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.35));
+        box-shadow: inset 0 0 14px rgba(0,0,0,.6), 0 0 0 4px rgba(150,100,50,.35);
+    }
+    /* مفصلات حديد */
+    .hinge {
+        position: absolute; left: 6%; right: 6%; height: 15%;
+        border-top: 9px solid #1a1a1f; border-radius: 0 0 0 0;
+    }
+    .hinge::before, .hinge::after {
+        content: ''; position: absolute; top: -4px; width: 46%; height: 100%;
+        border: 7px solid #1a1a1f; border-radius: 50%;
+        border-bottom-color: transparent; border-left-color: transparent;
+    }
+    .hinge::before { left: 6%; transform: rotate(-20deg); }
+    .hinge::after  { right: 6%; transform: rotate(160deg); }
+    .hinge.h1 { top: 7%; } .hinge.h2 { bottom: 8%; }
+    .gate-right .hinge::before { transform: rotate(20deg) scaleX(-1); }
+
+    .gate-container.open .gate-left  { transform: rotateY(-100deg); }
+    .gate-container.open .gate-right { transform: rotateY(100deg); }
+
+    /* الدرج */
+    .steps {
+        position: fixed; z-index: 3; left: 0; right: 0; bottom: 0; height: 14%;
+        background: linear-gradient(180deg, #1b2c55 0 22%, #0e1a3a 22% 24%, #14234a 24% 55%, #0a1330 55% 58%, #060b1c 58%);
+    }
+
+    /* المحتوى */
+    .content {
+        position: fixed; z-index: 7; left: 50%; top: 50%;
+        transform: translate(-50%, -50%); text-align: center;
+        width: min(92vw, 700px); padding: 0 20px;
+        transition: opacity 1.2s, transform 1.2s;
+    }
+    .kingdom-name {
+        font-family: 'Amiri', serif; font-size: clamp(45px, 9vw, 80px);
+        background: linear-gradient(90deg, #D4AF37, #FFF8DC, #D4AF37);
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        letter-spacing: 10px; margin-bottom: 22px;
+        filter: drop-shadow(0 0 14px rgba(0,0,0,.95)) drop-shadow(0 0 22px rgba(212,175,55,.6));
+    }
+    .ayah {
+        color: #fff; font-family: 'Amiri', serif;
+        font-size: clamp(18px, 2.6vw, 24px); line-height: 2; margin: 0 auto 30px;
+        text-shadow: 0 2px 12px #000, 0 0 24px #000;
+    }
+    .ayah-ref { color: #f1c85a; font-size: 16px; display: block; margin-top: 10px; }
+    .enter-btn {
+        padding: 16px 60px; background: linear-gradient(90deg, #8B6914, #D4AF37, #8B6914);
+        border: none; color: #000; font-family: 'Tajawal', sans-serif; font-size: 22px; font-weight: 700;
+        cursor: pointer; transition: .4s; letter-spacing: 4px; border-radius: 6px;
+        box-shadow: 0 0 30px rgba(212,175,55,.55);
+    }
+    .enter-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 0 50px rgba(212,175,55,.9); }
+    .enter-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .gate-container.open ~ .content { opacity: 0; transform: translate(-50%, -50%) scale(.9); pointer-events: none; }
+
+    @media (prefers-reduced-motion: reduce) { .light { animation: none; } }
+</style>
+</head>
+<body>
+    <div class="bg"></div>
+    <canvas id="snow"></canvas>
+    <div class="light"></div>
+
+    <div class="gate-container" id="gate">
+        <div class="door-frame">
+            <div class="gate gate-left">
+                <div class="hinge h1"></div><div class="panel"></div><div class="hinge h2"></div>
+            </div>
+            <div class="gate gate-right">
+                <div class="hinge h1"></div><div class="panel"></div><div class="hinge h2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="steps"></div>
+
+    <div class="content" id="content">
+        <h1 class="kingdom-name">NORTH</h1>
+        <div class="ayah">
+وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى﴾
+            <span class="ayah-ref">سورة الضحى — الآية 5</span>
+        </div>
+        <button class="enter-btn" onclick="openGate()">التالي</button>
+    </div>
+
+<script>
+    // ثلج + شرارات ذهبية
+    const c = document.getElementById('snow'), x = c.getContext('2d');
+    let W, H, ps = [];
+    function resize() { W = c.width = innerWidth; H = c.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+    for (let i = 0; i < 110; i++) ps.push({
+        x: Math.random() * W, y: Math.random() * H, r: Math.random() * 2 + .6,
+        v: Math.random() * .8 + .3, d: Math.random() * 2 * Math.PI,
+        gold: Math.random() < .3
+    });
+    function tick() {
+        x.clearRect(0, 0, W, H);
+        for (const p of ps) {
+            p.y += p.v; p.d += .01; p.x += Math.sin(p.d) * .4;
+            if (p.y > H) { p.y = -5; p.x = Math.random() * W; }
+            x.beginPath(); x.arc(p.x, p.y, p.r, 0, 7);
+            x.fillStyle = p.gold ? 'rgba(255,210,100,.9)' : 'rgba(255,255,255,.8)';
+            x.shadowBlur = p.gold ? 10 : 4; x.shadowColor = p.gold ? '#ffc95a' : '#fff';
+            x.fill();
+        }
+        requestAnimationFrame(tick);
+    }
+    tick();
+
+    function openGate() {
+        document.getElementById('gate').classList.add('open');
+        document.body.classList.add('opened');
+        document.getElementById('content').style.opacity = 0;
+        document.getElementById('content').style.pointerEvents = 'none';
+        setTimeout(() => { window.location.href = "./NORTH.html"; }, 2300);
+    }
+</script>
+</body>
+</html>
